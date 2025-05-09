@@ -2,7 +2,7 @@
 
 This project is a secure user registration form built using **vanilla HTML, CSS, JavaScript, PHP**, and **MySQL**, following best practices for input validation, secure password handling, and responsive design.
 
-[View a demo of the project here](demo.cedarvalewebdesign.ca)
+[View a demo of the project here](https://demo.cedarvalewebdesign.ca)
 
 ## 📋 Features
 
