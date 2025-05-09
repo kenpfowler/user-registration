@@ -2,6 +2,10 @@
 session_start();
 require __DIR__ . '/../config/db.php';
 
+function sanitize($value) {
+    return htmlspecialchars(trim($value), ENT_QUOTES, 'UTF-8');
+}
+
 // Redirect if user is not logged in
 if (!isset($_SESSION['user_id'])) {
     header('Location: /');
@@ -39,16 +43,16 @@ try {
             </form>
         </div>
 
-        <h1>Welcome, <?= htmlspecialchars($user['full_name']) ?>!</h1>
+        <h1>Welcome, <?= sanitize($user['full_name']) ?>!</h1>
 
         <div class="user-info">
-            <p><strong>Username:</strong> <?= htmlspecialchars($user['username']) ?></p>
-            <p><strong>Email:</strong> <?= htmlspecialchars($user['email']) ?></p>
-            <p><strong>Account Type:</strong> <?= htmlspecialchars($user['account_type']) ?></p>
+            <p><strong>Username:</strong> <?= sanitize($user['username']) ?></p>
+            <p><strong>Email:</strong> <?= sanitize($user['email']) ?></p>
+            <p><strong>Account Type:</strong> <?= sanitize($user['account_type']) ?></p>
             <?php if (!empty($user['contact_title'])): ?>
-                <p><strong>Contact Title:</strong> <?= htmlspecialchars($user['contact_title']) ?></p>
+                <p><strong>Contact Title:</strong> <?= sanitize($user['contact_title']) ?></p>
             <?php endif; ?>
-            <p><strong>Phone Number:</strong> <?= htmlspecialchars($user['phone_number']) ?></p>
+            <p><strong>Phone Number:</strong> <?= sanitize($user['phone_number']) ?></p>
         </div>
     </div>
 </body>
