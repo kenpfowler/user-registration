@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS users (
     account_type ENUM('individual', 'company') NOT NULL,
     username VARCHAR(50) NOT NULL UNIQUE,
     password_hash VARCHAR(255) NOT NULL,
-    full_name VARCHAR(100) NOT NULL,
+    full_name VARCHAR(100) NOT NULL, --full_name is displayed to the user as contact name on the company account_type (this could be confusing)
     contact_title VARCHAR(100), -- Only applicable if company
     phone_number VARCHAR(20),
     email VARCHAR(100) NOT NULL UNIQUE,
