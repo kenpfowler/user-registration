@@ -4,6 +4,8 @@ This project is a secure user registration form built using **vanilla HTML, CSS,
 
 [View a demo of the project here](https://demo.cedarvalewebdesign.ca)
 
+
+<!--  
 ## 📋 Features
 
 - Responsive, accessible registration form
@@ -62,3 +64,4 @@ This project is a secure user registration form built using **vanilla HTML, CSS,
    ```bash
    http://localhost/user-registration/
    ```
+-->
