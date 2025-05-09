@@ -6,16 +6,32 @@
 }
 
 :root {
-  --logo-blue: #1e3f96;       /* Star and text */
-  --logo-light-blue: #4f7cc2; /* Star gradient/light */
-  --logo-red: #cf2a2a;         /* Gear and "TOOLS" text */
-  --logo-white: #ffffff;       /* Background and internal star areas */
+  /* Neutral Greys & Black */
+  --foreground: #09090b;      /* Near-black, default body text */
+  --muted-foreground: #52525b; /* For subtle labels, placeholders */
+  --subtle-foreground: #a1a1aa; /* Faint hint text, helper text */
+  --border: #e4e4e7;
+  --input-bg: #f9fafb;
+  --background: #ffffff;
+
+
+
+  /* Accent Colors (U.S. flag theme) */
+  --primary: #002868; /* Navy */
+  --primary-foreground: #ffffff;
+  --secondary: #BF0A30; /* Flag red */
+  --secondary-foreground: #ffffff;
+
+  /* Utility Colors */
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --muted: #f4f4f5;
 }
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #F5F5F5;
-  color: #222;
+  color: var(--foreground);
+  background-color: var(--background);
   line-height: 1.5;
   padding: 2rem;
 }
@@ -48,7 +64,6 @@ body {
   text-align: center;
   padding: 1rem;
   background: #e6e6e6;
-  color: #222;
   font-weight: 500;
   border-radius: 6px 6px 0 0;
   cursor: pointer;
@@ -60,14 +75,13 @@ body {
 }
 
 .tab.active {
-  background-color: white;
-  border-bottom: 2px solid white;
+  color: var(--secondary-foreground);
+  background-color: var(--secondary);
   font-weight: 700;
 }
 
 /* === Forms === */
 .form-container {
-  background-color: white;
   border-radius: 8px;
   padding: 2rem;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
@@ -91,7 +105,6 @@ label {
   display: block;
   margin-top: 1rem;
   font-weight: 600;
-  color: #555;
 }
 
 input,
@@ -102,13 +115,13 @@ select {
   border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 1rem;
-  background-color: #fff;
+  color: var(--muted-foreground);
+  background-color: var(--input-bg)
 }
 
 input:focus,
 select:focus {
   outline: none;
-  border-color: var(--logo-blue);
   box-shadow: 0 0 0 2px rgba(0, 40, 104, 0.1);
 }
 
@@ -117,8 +130,8 @@ button {
   display: inline-block;
   margin-top: 1.5rem;
   padding: 0.75rem 1.5rem;
-  background-color: var(--logo-blue);
-  color: white;
+  background-color: var(--primary);
+  color: var(--primary-foreground);
   font-size: 1rem;
   font-weight: 600;
   border: none;
@@ -128,7 +141,7 @@ button {
 }
 
 button:hover {
-  background-color: var(--logo-light-blue);
+ background-color: #1e40af;
 }
 
 /* === Dashboard Styles === */
@@ -146,15 +159,15 @@ button:hover {
 }
 
 .logout form button {
-  background-color: var(--logo-blue);
+  color: var(--secondary-foreground);
+  background-color: var(--secondary);
 }
 
 .logout form button:hover {
-  background-color: var(--logo-light-blue);
+  background-color: #a10829;
 }
 
 .user-info {
-  background-color: white;
   padding: 1.5rem;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -163,8 +176,4 @@ button:hover {
 
 .user-info p {
   margin-bottom: 0.75rem;
-}
-
-.user-info strong {
-  color: var(--logo-blue);
 }
