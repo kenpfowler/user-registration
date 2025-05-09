@@ -5,6 +5,13 @@
   padding: 0;
 }
 
+:root {
+  --logo-blue: #1e3f96;       /* Star and text */
+  --logo-light-blue: #4f7cc2; /* Star gradient/light */
+  --logo-red: #cf2a2a;         /* Gear and "TOOLS" text */
+  --logo-white: #ffffff;       /* Background and internal star areas */
+}
+
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #F5F5F5;
@@ -18,6 +25,15 @@ body {
   margin: auto;
 }
 
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    max-width: 200px;
+    height: auto;
+}
 
 /* === Tabs Navigation === */
 .tabs {
@@ -68,7 +84,7 @@ form.active {
 h2 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: #002868;
+  color: var(--logo-blue);
 }
 
 label {
@@ -92,7 +108,7 @@ select {
 input:focus,
 select:focus {
   outline: none;
-  border-color: #002868;
+  border-color: var(--logo-blue);
   box-shadow: 0 0 0 2px rgba(0, 40, 104, 0.1);
 }
 
@@ -101,7 +117,7 @@ button {
   display: inline-block;
   margin-top: 1.5rem;
   padding: 0.75rem 1.5rem;
-  background-color: #002868;
+  background-color: var(--logo-blue);
   color: white;
   font-size: 1rem;
   font-weight: 600;
@@ -112,7 +128,7 @@ button {
 }
 
 button:hover {
-  background-color: #002868;
+  background-color: var(--logo-light-blue);
 }
 
 /* === Dashboard Styles === */
@@ -121,16 +137,20 @@ button:hover {
   margin: auto;
 }
 
+.logout form {
+  display: block;
+}
+
 .logout {
   text-align: right;
 }
 
 .logout form button {
-  background-color: #002868;
+  background-color: var(--logo-blue);
 }
 
 .logout form button:hover {
-  background-color: #001A4D;
+  background-color: var(--logo-light-blue);
 }
 
 .user-info {
@@ -146,5 +166,5 @@ button:hover {
 }
 
 .user-info strong {
-  color: #002868;
+  color: var(--logo-blue);
 }
