@@ -1,4 +1,11 @@
-<?php session_start(); ?>
+<?php 
+session_start(); 
+require_once __DIR__ . '/../src/auth-check.php';
+
+if (is_logged_in()) {
+    header('Location: dashboard.php');
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">

@@ -1,13 +1,15 @@
 <?php
 session_start();
-require __DIR__ . '/../config/db.php';
+require_once __DIR__ . '/../config/db.php';
+require_once __DIR__ . '/../src/auth-check.php';
+
 
 function sanitize($value) {
     return htmlspecialchars(trim($value), ENT_QUOTES, 'UTF-8');
 }
 
 // Redirect if user is not logged in
-if (!isset($_SESSION['user_id'])) {
+if (!is_logged_in()) {
     header('Location: /');
     exit;
 }
