@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +20,17 @@
       <div class="tab active" data-tab="register">Register</div>
       <div class="tab" data-tab="login">Login</div>
     </div>
+
+    <!-- Alert Message -->
+    <?php if (isset($_SESSION['message'])): ?>
+      <div class="alert <?= htmlspecialchars($_SESSION['msg_type']); ?>">
+        <?= htmlspecialchars($_SESSION['message']); ?>
+      </div>
+    <?php
+      unset($_SESSION['message'], $_SESSION['msg_type']);
+      endif;
+     ?>
+
 
 
     <!-- Registration form -->
@@ -59,7 +72,7 @@
     <!-- Login form -->
     <form id="login-form" action="handle-login.php" method="POST">
       <h2>Login</h2>
-
+      
       <label for="email">Email:</label>
       <input type="email" name="email" required />
 

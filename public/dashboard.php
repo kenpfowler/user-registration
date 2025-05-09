@@ -36,7 +36,16 @@ try {
     <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <div class="dashboard">
+        <!-- Alert Message -->
+  <?php if (isset($_SESSION['message'])): ?>
+    <div class="alert <?= htmlspecialchars($_SESSION['msg_type']); ?>">
+      <?= htmlspecialchars($_SESSION['message']); ?>
+    </div>
+  <?php
+      unset($_SESSION['message'], $_SESSION['msg_type']);
+    endif;
+  ?>
+    <div class="dashboard container">
         <div class="logout">
             <form method="POST" action="handle-logout.php">
                 <button type="submit">Log Out</button>

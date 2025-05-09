@@ -8,7 +8,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // fail fast if email isn't validated
     if (!$email) {
-        echo "Invalid email or password.";
+        $_SESSION['message'] = "Login failed. Invalid email or password.";
+        $_SESSION['msg_type'] = "failure";
+        header('Location: /'); // redirect to protected area
         exit;
     }
     
@@ -26,18 +28,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             session_regenerate_id(true); 
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['email'] = $user['email'];
+
+            $_SESSION['message'] = "Welcome back!";
+            $_SESSION['msg_type'] = "success";
             header('Location: dashboard.php'); // redirect to protected area
             exit;
         } else {
             // ❌ Invalid credentials
-            // TODO: notify the user that their credentails are invalid and reset the form instead of echoing
-            echo "Invalid email or password.";
+            $_SESSION['message'] = "Login failed. Invalid email or password.";
+            $_SESSION['msg_type'] = "failure";
+            header('Location: /'); // redirect to protected area
             exit;
         }
     } catch (PDOException $e) {
         error_log("Login error: " . $e->getMessage());
-        // TODO: notify they user on page
-        echo "An error occurred. Please try again later.";
+        header('Location: error.html');
+        exit;
     }
 } else {
     // It might be okay to echo the response here. The average user will use the POST method since it is enforced by the UI.

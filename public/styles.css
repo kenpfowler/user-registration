@@ -14,8 +14,6 @@
   --input-bg: #f9fafb;
   --background: #ffffff;
 
-
-
   /* Accent Colors (U.S. flag theme) */
   --primary: #002868; /* Navy */
   --primary-foreground: #ffffff;
@@ -23,6 +21,18 @@
   --secondary-foreground: #ffffff;
 
   /* Utility Colors */
+  --alert-success-foreground: #065f46;
+  --alert-success-background: #ecfdf5;
+  --alert-success-border: #34d399;
+
+  --alert-failure-foreground: #991b1b;
+  --alert-failure-background: #fef2f2;
+  --alert-failure-border: #f87171;
+
+  --alert-neutral-foreground: #374151;
+  --alert-neutral-background: #f9fafb;
+  --alert-neutral-border: #d1d5db;
+
   --destructive: #dc2626;
   --destructive-foreground: #ffffff;
   --muted: #f4f4f5;
@@ -34,6 +44,37 @@ body {
   background-color: var(--background);
   line-height: 1.5;
   padding: 2rem;
+}
+
+/* Alert styles */
+.alert {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  margin: 1rem auto;
+  max-width: 400px;
+  text-align: center;
+  border: 1px solid transparent;
+}
+
+.neutral {
+  background-color: var(--alert-neutral-background);
+  color: var(--alert-neutral-foreground);
+  border-color: var(--alert-neutral-border);
+}
+
+.success {
+  background-color: var(--alert-success-background);
+  color: var(--alert-success-foreground);
+  border-color: var(--alert-success-border);
+
+}
+
+.failure {
+  background-color: var(--alert-failure-background);
+  color: var(--alert-failure-foreground);
+  border-color: var(--alert-failure-border);
+
 }
 
 .container {

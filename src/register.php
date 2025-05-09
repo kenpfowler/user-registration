@@ -25,10 +25,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     // fail if required data is not provided
-    if (empty($account_type) || empty($username) || empty($password) || empty($full_name) || empty($phone_number) || empty($email)) {
-    $_SESSION['error'] = "Please fill out all required fields.";
-    header('Location: /');
-    exit;
+    if (empty($account_type) || empty($username) || empty($password) || empty($full_name)  || empty($email)) {
+        $_SESSION['message'] = "Please fill out all required fields.";
+        $_SESSION['msg_type'] = "failure";
+        header('Location: /'); // redirect to protected area
+        exit;
     }
 
 
@@ -62,15 +63,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     } catch (PDOException $e) {
         if ($e->errorInfo[1] === 1062) {
-            // TODO: user should stay on page and receive an alert
-            echo "Username or Email already exists.";
+            $_SESSION['message'] = "Username or Email already exists.";
+            $_SESSION['msg_type'] = "failure";
+            header('Location: /'); // redirect to protected area
+            exit;
         } else {
-            // TODO: understand what this catchall error actually does
-            echo "Error: " . $e->getMessage();
+            error_log("Login error: " . $e->getMessage());
+            header('Location: error.html');
+            exit;
         }
     }
 } else {
-    // TODO: user should stay on page and receive an alert
+    // It might be okay to echo the response here. The average user will use the POST method since it is enforced by the UI.
+    // Only someone with advanced knowledge of the web would try to access this endpoint by other means (curl, etc...)
     echo "Invalid request method.";
 }
 ?>
