@@ -8,15 +8,19 @@
 </head>
 <body>
   <div class="form-container container">
+    <!-- Logo -->
     <div class="logo-container">
       <img src="assets/expat_tax_tools_logo.jpg" alt="Expat Tax Tools Logo" class="logo">
     </div>
 
+    <!-- Tab header -->
     <div class="tabs">
       <div class="tab active" data-tab="register">Register</div>
       <div class="tab" data-tab="login">Login</div>
     </div>
 
+
+    <!-- Registration form -->
     <form id="registration-form" class="active" action="handle-register.php" method="POST">
       <h2>Register</h2>
 
@@ -52,6 +56,7 @@
       <button type="submit">Register</button>
     </form>
 
+    <!-- Login form -->
     <form id="login-form" action="handle-login.php" method="POST">
       <h2>Login</h2>
 
