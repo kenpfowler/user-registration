@@ -1,5 +1,6 @@
 <?php
 require '../config/db.php';
+session_start();
 
 // TODO: Understand this function
 function sanitize($value) {
@@ -21,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // TODO: once we've vaildated and sanitized the inputs we may want to do somthing with the values before we try to insert them into the database
 
     if (!$email) {
-        // apparently die can be abused. Can we sent the user an alert if the email is incorrect?
+        // apparently die fucntion can be abused. Can we sent the user an alert if the email is incorrect?
         die("Invalid email format.");
     }
 
@@ -47,8 +48,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ':email'          => $email
         ]);
 
-        // TODO: succuessfull registration should redirect user
-        echo "Registration successful.";
+        // Set session to log the user in
+        $_SESSION['user_id'] = $pdo->lastInsertId();
+
+        // Redirect to protected area
+        header('Location: dashboard.php');
+        exit;
     } catch (PDOException $e) {
         if ($e->errorInfo[1] === 1062) {
             // TODO: user should stay on page and receive an alert
