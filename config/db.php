@@ -13,8 +13,16 @@ $options = [
 ];
 
 try {
+    // instantiate database connction
+    // https://www.php.net/manual/en/book.pdo.php
     $pdo = new PDO($dsn, $user, $pass, $options);
 } catch (\PDOException $e) {
-    die("Database connection failed: " . $e->getMessage());
+    // Log the error to a file or error monitoring system
+    // https://www.php.net/manual/en/function.error-log.php
+    error_log("Database connection failed: " . $e->getMessage());
+
+    // redirect or show a user-friendly message
+    header("Location: /error.html");
+    exit;
 }
 ?>
