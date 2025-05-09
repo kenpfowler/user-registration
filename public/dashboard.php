@@ -4,7 +4,7 @@ require __DIR__ . '/../config/db.php';
 
 // Redirect if user is not logged in
 if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
+    header('Location: /');
     exit;
 }
 
