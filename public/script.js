@@ -4,7 +4,7 @@
       register: document.getElementById('registration-form'),
       login: document.getElementById('login-form')
     };
-
+    
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {
         // Update tab UI
