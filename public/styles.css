@@ -1,3 +1,4 @@
+/* === Global Reset === */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -5,34 +6,55 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
-  max-width: 400px;
-  margin: 2em auto;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #F5F5F5;
+  color: #222;
+  line-height: 1.5;
+  padding: 2rem;
 }
 
+.container {
+  max-width: 600px;
+  margin: auto;
+}
+
+
+/* === Tabs Navigation === */
 .tabs {
   display: flex;
-  margin-bottom: 1em;
+  justify-content: space-around;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #ccc;
 }
 
 .tab {
   flex: 1;
   text-align: center;
-  padding: 10px;
-  background: #f0f0f0;
-  border: 1px solid #ccc;
+  padding: 1rem;
+  background: #e6e6e6;
+  color: #222;
+  font-weight: 500;
+  border-radius: 6px 6px 0 0;
   cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab:hover {
+  background-color: #dcdcdc;
 }
 
 .tab.active {
-  background: #fff;
-  border-bottom: none;
-  font-weight: bold;
+  background-color: white;
+  border-bottom: 2px solid white;
+  font-weight: 700;
 }
 
+/* === Forms === */
 .form-container {
-  border: 1px solid #ccc;
-  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  padding: 2rem;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
 }
 
 form {
@@ -43,29 +65,86 @@ form.active {
   display: block;
 }
 
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #002868;
+}
+
 label {
   display: block;
-  margin-top: 1em;
+  margin-top: 1rem;
+  font-weight: 600;
+  color: #555;
 }
 
-input, select {
+input,
+select {
   width: 100%;
-  padding: 0.5em;
-  margin-top: 0.25em;
+  padding: 0.6rem 0.8rem;
+  margin-top: 0.25rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: #fff;
 }
 
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #002868;
+  box-shadow: 0 0 0 2px rgba(0, 40, 104, 0.1);
+}
+
+/* === Buttons === */
 button {
   display: inline-block;
+  margin-top: 1.5rem;
   padding: 0.75rem 1.5rem;
-  background-color: #007bff;
+  background-color: #002868;
   color: white;
+  font-size: 1rem;
+  font-weight: 600;
   border: none;
   border-radius: 8px;
-  text-decoration: none;
-  font-size: 1rem;
+  cursor: pointer;
   transition: background 0.3s ease;
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #002868;
+}
+
+/* === Dashboard Styles === */
+.dashboard {
+  max-width: 700px;
+  margin: auto;
+}
+
+.logout {
+  text-align: right;
+}
+
+.logout form button {
+  background-color: #002868;
+}
+
+.logout form button:hover {
+  background-color: #001A4D;
+}
+
+.user-info {
+  background-color: white;
+  padding: 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-top: 2rem;
+}
+
+.user-info p {
+  margin-bottom: 0.75rem;
+}
+
+.user-info strong {
+  color: #002868;
 }

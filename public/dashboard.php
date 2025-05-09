@@ -29,13 +29,6 @@ try {
 <head>
     <meta charset="UTF-8">
     <title>User Dashboard</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 2em; }
-        .dashboard { max-width: 600px; margin: auto; }
-        .user-info { margin-bottom: 2em; padding: 1em; border: 1px solid #ccc; border-radius: 8px; }
-        .logout { text-align: right; }
-        .logout form { display: inline; }
-    </style>
 </head>
 <body>
     <div class="dashboard">
