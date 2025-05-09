@@ -19,20 +19,6 @@
       });
     });
 
-    // Show Contact Title only if company is selected
-    const accountTypeSelect = document.getElementById('account_type');
-    const contactTitleField = document.getElementById('contact-title-field');
-
-    accountTypeSelect.addEventListener('change', () => {
-      if (accountTypeSelect.value === 'company') {
-        contactTitleField.style.display = 'block';
-      } else {
-        contactTitleField.style.display = 'none';
-      }
-    });
-
-
-
 // Toggle between account type registrations
 document.getElementById("account_type").addEventListener("change", function () {
   const accountType = this.value;
