@@ -2,34 +2,45 @@
 session_start();
 require '../config/db.php';
 
-function sanitize($value) {
-    return htmlspecialchars(trim($value), ENT_QUOTES, 'UTF-8');
-}
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $email = sanitize($_POST['email']);
+    $email = filter_var(trim($_POST['email']), FILTER_VALIDATE_EMAIL);
     $password = $_POST['password'];
 
+    // fail fast if email isn't validated
+    if (!$email) {
+        echo "Invalid email or password.";
+        exit;
+    }
+    
     try {
+        // use prepared statement and binding parameters to prevent SQL injection.
         $stmt = $pdo->prepare("SELECT id, email, password_hash FROM users WHERE email = :email LIMIT 1");
         $stmt->execute([':email' => $email]);
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user && password_verify($password, $user['password_hash'])) {
             // ✅ Password matched — create session
-            session_regenerate_id(true); // prevents session fixation
+            
+            // gaurd against session fixation
+            // https://owasp.org/www-community/attacks/Session_fixation
+            session_regenerate_id(true); 
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['email'] = $user['email'];
             header('Location: dashboard.php'); // redirect to protected area
             exit;
         } else {
             // ❌ Invalid credentials
+            // TODO: notify the user that their credentails are invalid and reset the form instead of echoing
             echo "Invalid email or password.";
+            exit;
         }
     } catch (PDOException $e) {
         error_log("Login error: " . $e->getMessage());
+        // TODO: notify they user on page
         echo "An error occurred. Please try again later.";
     }
 } else {
+    // It might be okay to echo the response here. The average user will use the POST method since it is enforced by the UI.
+    // Only someone with advanced knowledge of the web would try to access this endpoint by other means (curl, etc...)
     echo "Invalid request method.";
 }
