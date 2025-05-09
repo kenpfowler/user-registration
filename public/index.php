@@ -8,12 +8,13 @@
 </head>
 
 <body>
-  <div class="tabs">
-    <div class="tab active" data-tab="register">Register</div>
-    <div class="tab" data-tab="login">Login</div>
-  </div>
 
-  <div class="form-container">
+  <div class="form-container container">
+    <div class="tabs">
+      <div class="tab active" data-tab="register">Register</div>
+      <div class="tab" data-tab="login">Login</div>
+    </div>
+
     <form id="registration-form" class="active" action="handle-register.php" method="POST">
       <h2>Register</h2>
 
