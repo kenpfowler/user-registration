@@ -1,7 +1,4 @@
 <?php
-session_start();
-
-// Clear all session variables
 $_SESSION = [];
 
 // Invalidate the session cookie

@@ -1,6 +1,5 @@
 <?php
 require '../config/db.php';
-session_start();
 
 function sanitize($value) {
     return htmlspecialchars(trim($value), ENT_QUOTES, 'UTF-8');
@@ -28,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($account_type) || empty($username) || empty($password) || empty($full_name)  || empty($email)) {
         $_SESSION['message'] = "Please fill out all required fields.";
         $_SESSION['msg_type'] = "failure";
-        header('Location: /'); // redirect to protected area
+        header('Location: index.php?page=login-register.php');
         exit;
     }
 
@@ -59,13 +58,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['user_id'] = $pdo->lastInsertId();
 
         // Redirect to protected area
-        header('Location: dashboard.php');
+        header('Location: index.php?page=login-register.php');
         exit;
     } catch (PDOException $e) {
         if ($e->errorInfo[1] === 1062) {
             $_SESSION['message'] = "Username or Email already exists.";
             $_SESSION['msg_type'] = "failure";
-            header('Location: /'); // redirect to protected area
+            header('Location: index.php?page=login-register.php'); // redirect to protected area
             exit;
         } else {
             error_log("Login error: " . $e->getMessage());

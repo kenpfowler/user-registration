@@ -1,8 +1,4 @@
 <?php
-session_start();
-require_once __DIR__ . '/../config/db.php';
-require_once __DIR__ . '/../src/auth-check.php';
-
 
 function sanitize($value) {
     return htmlspecialchars(trim($value), ENT_QUOTES, 'UTF-8');
@@ -10,7 +6,7 @@ function sanitize($value) {
 
 // Redirect if user is not logged in
 if (!is_logged_in()) {
-    header('Location: /');
+    header('Location: index.php?page=login-register.php');
     exit;
 }
 
@@ -30,14 +26,6 @@ try {
     exit;
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>User Dashboard</title>
-    <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
         <!-- Alert Message -->
   <?php if (isset($_SESSION['message'])): ?>
     <div class="alert <?= htmlspecialchars($_SESSION['msg_type']); ?>">
@@ -66,5 +54,3 @@ try {
             <p><strong>Phone Number:</strong> <?= sanitize($user['phone_number']) ?></p>
         </div>
     </div>
-</body>
-</html>
