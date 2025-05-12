@@ -1,5 +1,6 @@
 <?php
-require __DIR__ . '../config/db.php';
+require __DIR__ . '/../config/db.php';
+
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = filter_var(trim($_POST['email']), FILTER_VALIDATE_EMAIL);
@@ -9,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!$email) {
         $_SESSION['message'] = "Login failed. Invalid email or password.";
         $_SESSION['msg_type'] = "failure";
-        header('Location: index.php?page=login-register.php'); // redirect to protected area
+        header('Location: index.php?page=login-register'); // redirect to protected area
         exit;
     }
     
@@ -30,13 +31,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $_SESSION['message'] = "Welcome back!";
             $_SESSION['msg_type'] = "success";
-            header('Location: index.php?page=dashboard.php'); // redirect to protected area
+            header('Location: index.php?page=dashboard'); // redirect to protected area
             exit;
         } else {
             // ❌ Invalid credentials
             $_SESSION['message'] = "Login failed. Invalid email or password.";
             $_SESSION['msg_type'] = "failure";
-            header('Location: index.php?page=login-register.php'); // redirect to protected area
+            header('Location: index.php?page=login-register'); 
             exit;
         }
     } catch (PDOException $e) {

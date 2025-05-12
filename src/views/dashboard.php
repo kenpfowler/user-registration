@@ -1,13 +1,15 @@
 <?php
-
-function sanitize($value) {
-    return htmlspecialchars(trim($value), ENT_QUOTES, 'UTF-8');
-}
+require __DIR__ . '/../config/db.php';
+require __DIR__ . '/../handlers/auth-check.php';
 
 // Redirect if user is not logged in
 if (!is_logged_in()) {
-    header('Location: index.php?page=login-register.php');
+    header('Location: index.php?page=login-register');
     exit;
+}
+
+function sanitize($value) {
+    return htmlspecialchars(trim($value), ENT_QUOTES, 'UTF-8');
 }
 
 // Get user info from the database
@@ -20,6 +22,7 @@ try {
         echo "User not found.";
         exit;
     }
+    
 } catch (PDOException $e) {
     error_log("Dashboard DB error: " . $e->getMessage());
     echo "An error occurred. Please try again later.";
