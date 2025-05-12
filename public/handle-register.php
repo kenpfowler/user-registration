@@ -5,4 +5,4 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit('Forbidden');
 }
 
-require_once __DIR__ . '/../src/register.php';
+require_once __DIR__ . '../src/handlers/register.php';
