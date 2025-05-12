@@ -4,3 +4,5 @@
     &copy; <?= date('Y') ?> Expat Tax Tools. All rights reserved.
   </div>
 </footer>
+</body>
+</html>
