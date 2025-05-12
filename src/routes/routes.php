@@ -1,6 +1,6 @@
 <?php
 return [
     '/' => 'home.php',
-    'login' => 'login.php',
+    'login' => 'login-register.php',
     'dashboard' => 'dashboard.php',
 ];
