@@ -22,7 +22,7 @@ try {
     error_log("Database connection failed: " . $e->getMessage());
 
     // redirect or show a user-friendly message
-    header("Location: /error.html");
+    header("Location: error.html");
     exit;
 }
 ?>
